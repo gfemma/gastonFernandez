@@ -1,0 +1,15 @@
+    </div>
+    <!-- Archivos JS a cargar -->
+    <?php
+    if(CanUseArray($js_files)){
+        foreach($js_files as $value){
+            if(!empty($value)){ ?>
+                <script src="<?php echo URL_js.$value; ?>"></script>
+            <?php
+            }
+        }
+    }
+    ?>
+    <script src="<?php echo URL_js.$controlador->alias; ?>.js"></script>
+    </body>
+</html>

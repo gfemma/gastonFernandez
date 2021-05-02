@@ -1,0 +1,159 @@
+:root{
+    --color-activo: rgba(212, 246, 255, 1);
+}
+/* url("fonts/fa-regular-400.eot"),  */
+@font-face {
+    font-family: "Icons";
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/fa-brands-400.eot") format("embedded-opentype"), url("fonts/fa-brands-400.woff2") format("woff2"), url("fonts/fa-brands-400.woff") format("woff"), url("fonts/fa-brands-400.ttf") format("truetype"), url("fonts/fa-brands-400.svg") format("svg");
+    src: url("fonts/fa-solid-900.eot") format("embedded-opentype"), url("fonts/fa-solid-900.woff2") format("woff2"), url("fonts/fa-solid-900.woff") format("woff"), url("fonts/fa-solid-900.ttf") format("truetype"), url("fonts/fa-solid-900.svg") format("svg");
+}
+
+.contentWrapper{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("../imgs/background3.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+.row{
+    max-width: 100vw;
+    align-self: center;
+}
+
+.mainContent{
+    display: block;
+    margin-top: 2vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.mainContent > .col{
+    max-width: 80% !important;
+    align-self: center;
+}
+
+/* Barra superior */
+.navRow{
+    display: flex;
+}
+
+.mainNav{
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 90vw;
+    border-radius: 1.3em;
+}
+.mainNav.scrolled{
+    background-color: red !important;
+}
+
+.mainNav .dropdown .nav-item .nav-link{
+    text-align: center;
+}
+
+.mainNav .dropdown .nav-item .nav-link:hover{
+    background-color: var(--color-activo);
+    color: black !important;
+}
+
+.mainNav .dropdown .nav-item .nav-link.active{
+    background-color: transparent !important;
+}
+
+.mainNav .dropdown .nav-item .nav-link.active::before{
+    font-family: "Icons";
+    font-weight: 900;
+    content: "\f105";
+    padding-right: 10px;
+    animation: formSelected 1s ease-in 0s infinite alternate forwards;
+}
+
+.mainNav .dropdown .nav-item .nav-link.active::after{
+    font-family: "Icons";
+    font-weight: 900;
+    content: "\f104";
+    padding-left: 10px;
+    animation: formSelected 1s ease-out 0s infinite alternate-reverse forwards;
+}
+
+@keyframes formSelected {
+    0%{
+       filter: hue-rotate(calc(360/11)deg);
+    }
+    10%{
+        filter: hue-rotate(calc(360/11*2)deg);
+    }
+    20%{
+        filter: hue-rotate(calc(360/11*3)deg);
+    }
+    30%{
+        filter: hue-rotate(calc(360/11*4)deg);
+    }
+    40%{
+        filter: hue-rotate(calc(360/11*5)deg);
+    }
+    50%{
+        filter: hue-rotate(calc(360/11*6)deg);
+    }
+    60%{
+        filter: hue-rotate(calc(360/11*7)deg);
+    }
+    70%{
+        filter: hue-rotate(calc(360/11*8)deg);
+    }
+    80%{
+        filter: hue-rotate(calc(360/11*9)deg);
+    }
+    90%{
+        filter: hue-rotate(calc(360/11*10)deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+
+.mainNav .nav-item.selected{
+    border-radius: 1.3em;
+    background-color: var(--color-activo);
+}
+.mainNav .btn:active,.mainNav .btn:focus,.mainNav .btn:not(:focus){
+    border-end-end-radius: 1.3em;
+    border-start-end-radius: 1.3em;
+}
+/* Fin barra superior */
+
+
+/* Formulario de datos */
+.formData .row.data{
+    display: flex;
+}
+.formData .row.data .col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formData .row.data .col input, .formData .row.data .col select{
+    text-align: center !important;
+    text-align-last: center !important;
+}
+
+@media screen and (max-width: 575px){
+    .formData .row.data{
+        display: inline-block;
+    }   
+}
+/* Fin Formulario de datos */
+
+.toggle.btn.off .toggle-handle{
+    background-color: #28a745 !important;
+}
+
+.toggle.btn .toggle-handle{
+    background-color: #bd2130 !important;
+}

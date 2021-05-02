@@ -1,0 +1,11 @@
+RewriteEngine On
+
+#Bloqueo el listado de archivos
+Options All -Indexes
+
+#Deshabilito el acceso directo a archivos
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#Redirigimos todo al index.php
+RewriteRule ^(.*)$ index.php [QSA,L]

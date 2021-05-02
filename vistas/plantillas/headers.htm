@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hola mundo</title>
+        <!-- Archivos CSS a cargar -->
+        <?php
+            if(CanUseArray($css_files)){
+                foreach($css_files as $value){
+                    if(!empty($value)){ ?>
+                        <link rel="stylesheet" href="<?php echo URL_css.$value; ?>">
+                    <?php
+                    }
+                }
+            }
+        ?>
+        <link rel="stylesheet" href="<?php echo URL_css.$controlador->alias; ?>.css">
+    </head>
+<body>
+    <div class="contentWrapper">
+     
+        
