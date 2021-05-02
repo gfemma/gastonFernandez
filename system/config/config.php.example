@@ -2,8 +2,8 @@
 /**
  * Parametros de conexión a la base de datos
  */
-    define("database", "facultad");
-    define("db_host", "localhost");
-    define("db_user", "root");
-    define("db_pass", "");
+    define("dbname", "facultad");
+    define("dbhost", "localhost");
+    define("dbuser", "root");
+    define("dbpass", "");
 ?>
