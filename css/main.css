@@ -157,3 +157,31 @@
 .toggle.btn .toggle-handle{
     background-color: #bd2130 !important;
 }
+
+/* Error msg */
+.errorMsg{
+    background-color: rgba(255,30,36,01);
+    padding: 0.5rem;
+    width: auto;
+    border-radius: 1em;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.errorMsg::before{
+    position: absolute;
+    z-index: -1;
+    content: "";
+    left: calc(50% - 10px);
+    top: calc(50%*2);
+    border-style: solid;
+    border-width: 0px 10px 10px 10px;
+    border-color: transparent transparent rgba(255,30,36,1) transparent;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transform: rotate(180deg);
+}
+
+.errorMsg > span{
+    color: white;
+    font-weight: 500;
+}

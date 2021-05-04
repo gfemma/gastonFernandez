@@ -12,9 +12,7 @@ class cEval{
     }
 
     setError(){
-        if(this.Result.length > 1){
-            console.log(this.Result);
-        }else{
+        if(this.Result.length <= 1){
             var prev = document.getElementById("msgerr");
             if(prev){
                 prev.remove();
@@ -69,6 +67,16 @@ class cEval{
             wrapper.appendChild(btn);
             btn.click();
             btn.remove();
+        }else{
+            var result = this.Result;
+            for(var d in result){
+                if(d != 'msgeer'){
+                   var element = document.getElementById(d);
+                   if(element){
+                       $(element).msgerr(result[d]);
+                   }
+                }
+            }
         }
     }
 }

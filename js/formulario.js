@@ -1,5 +1,11 @@
 var evResult = new cEval;
-
+var frmData = new cFormSend({
+    file: 'checkData',
+    content: 'formulario',
+    onFinish: function(a,b,c,d){
+        evResult.Eval(c);
+    }
+});
 
 function obtenerPaises(){
     ajax({
@@ -144,6 +150,74 @@ function clearOptions(id){
     while(select.childElementCount > 0){
         select.children[0].remove();
     }
+}
+
+function sendFormData(id){
+    var frm = document.getElementById(id);
+    if(frm == null){
+        console.log("Elemento no encontrado");
+        return;
+    }
+    var result = checkFormData(frm);
+    if(!result){
+        return;
+    }
+
+    frmData.send(frm);
+}
+
+function checkFormData(frm){
+    var result = true;
+    if(frm == null){
+        console.log("Elemento no encontrado");
+        return;
+    }
+
+    if(frm.nodeName != 'FORM'){
+        console.log("El elemento no es un formulario");
+        return;
+    }
+
+    var ele = frm.nombre;
+    if(ele.value.trim() == ''){
+        result = $(ele).msgerr("Debes colocar tú nombre");
+    }
+
+    ele = frm.apellido;
+    if(ele.value.trim() == ''){
+        result = $(ele).msgerr("Debes colocar tú apellido");
+    }
+
+    ele = frm.dni;
+    if(ele.value.trim() == ''){
+        result = $(ele).msgerr("Debes colocar tú DNI");
+    }
+
+    ele = frm.fechanac;
+    if(ele.value.trim() == ''){
+        result = $(ele).msgerr("Debes colocar tú fecha de nacimiento");
+    }
+
+    ele = frm.email;
+    if(ele.value.trim() == ''){
+        result = $(ele).msgerr("Debes colocar tú fecha de email");
+    }
+
+    ele = frm.pais;
+    if(ele.value == -1){
+        result = $(ele).msgerr("Debes seleccionar tú país");
+    }
+
+    ele = frm.localidad;
+    if(ele.value == -1){
+        result = $(ele).msgerr("Debes seleccionar tú localidad");
+    }
+
+    ele = frm.terminos;
+    if(ele.checked === false){
+        result = $(ele).msgerr("Debes aceptar los terminos y condiciones");
+    }
+    return result;
 }
 
 window.onload = function(){
