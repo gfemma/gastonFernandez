@@ -1,23 +1,47 @@
-<div class="row navRow sticky-top">
-    <div class="col d-flex justify-content-center">
-        <ul class="nav mainNav" role="tablist">
-            <li class="nav-item dropdown selected">
-                <div class="btn-group dropdown">
-                    <button class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="font-weight-bold">Formularios</span></button>
-                    <button class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    </button>
-                    <div class="dropdown-menu">
-                        <ul class="nav d-block">
-                            <li class="nav-item">
-                                <a class="nav-link active dropdown-item text-info font-weight-bold" href="#formPost" aria-controls="formPost" role="tab" data-toggle="pill">Post</a>
+<?php
+    //Si hubo un error ni siquiera armo el menu
+    if(isset($menu->erorMsg) or !CanUseArray($menu->parents)){
+        return;
+    }
+?>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Menu</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse mainNav" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <?php
+                foreach($menu->parents as $value){ 
+                    if(!empty($value)){ 
+                        if($menu->hasChildrends($value)){ ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle <?php echo ($controlador->padre == strtolower($value))? 'active':''; ?>" id="<?php echo $value;?>Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo AcomodarMayusculas($value); ?>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="<?php echo $value;?>Dropdown">
+                                    <?php
+                                        $childrens = $menu->getChildrens($value);
+                                        foreach($childrens as $hijo){
+                                            if(!empty($hijo)){ 
+                                                $finalUrl = BASE_url.strtolower($value).'/'.strtolower($hijo);
+                                                 ?>
+                                                <a class="dropdown-item <?php echo ($controlador->alias == strtolower($hijo))? 'selected':''; ?>" href="<?php echo $finalUrl; ?>"><?php echo AcomodarMayusculas($hijo); ?></a>
+                                    <?php   }
+                                        }
+                                    ?>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link dropdown-item text-info font-weight-bold" href="#formGet" aria-controls="formGet" role="tab" data-toggle="pill">Get</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-        </ul>
+                <?php   }else{
+                            ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo ($controlador->padre == strtolower($value))? 'active':''; ?>" href="<?php echo BASE_url.strtolower($value); ?>"><?php echo AcomodarMayusculas($value); ?></a>
+                        </li>
+                    <?php
+                        }
+                    }
+                }
+            ?>
     </div>
-</div>
+</nav>

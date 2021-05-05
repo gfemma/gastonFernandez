@@ -4,7 +4,7 @@
     $url = array();
     //Busco la url solicitadad
     if(!isset($_SERVER['REDIRECT_URL']) or empty($_SERVER['REDIRECT_URL'])){
-        $_SERVER['REDIRECT_URL'] = '/formularios/formulario'; 
+        $_SERVER['REDIRECT_URL'] = '/formularios/post'; 
     }
     $url = explode("/",$_SERVER['REDIRECT_URL']);
     //La primera posición del array siempre esta vacía, asi que la quito
@@ -20,6 +20,9 @@
     header("Expires: 1");//En cuanto tiempo expira el cache
     header("Pragma: no-cache");//Sin cache
     header("Cache-Control: no-cache, must-revalidate");//Sin cache
+    if(!isset($_SESSION)){
+        session_start();
+    }
     //A partir de aca que se encargue el controlador
     require_once(DIR_controllers."controlador_pagina.php");
 ?>

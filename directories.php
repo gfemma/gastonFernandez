@@ -29,7 +29,8 @@
     define("DIR_controllers", DIR_root."controllers".DS);
 
     //Url's
-    define("URL_css", $main_url."/css/");
-    define("URL_js", $main_url."/js/");
+    define("BASE_url", $main_url."/");
+    define("URL_css", BASE_url."css/");
+    define("URL_js", BASE_url."js/");
 
 ?>

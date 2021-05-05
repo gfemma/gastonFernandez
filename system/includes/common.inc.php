@@ -131,6 +131,13 @@
     }
 
     /**
+     * Determina si un string es un json valido a profundidad
+     */
+    function IsJsonEx($str){
+        return preg_match('/^[{\[]{1}([,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t]|".*?")+[}\]]$/im', $str);
+    }
+
+    /**
      * Limpia un array quitando las posiciones vacias (omitiendo el 0 y el false)
      */
     function CleanArray($arr){
@@ -141,6 +148,20 @@
                    unset($result[$key]); 
                 }
             }
+        }
+        return $result;
+    }
+
+    /**
+     * Acomoda las mayusculas de un text para que este quede legible
+     */
+    function AcomodarMayusculas($str){
+        $result = $str;
+        if(!empty($result)){
+            $result = strtolower($result);
+            $result = preg_replace_callback("/(^[a-z]{1}|\.[\s][a-z]{1})/i", function($value){
+                return strtoupper($value[0]);
+            }, $result);
         }
         return $result;
     }

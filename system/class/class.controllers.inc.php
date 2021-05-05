@@ -5,6 +5,8 @@
 
     class cControllers{
         public $alias = null;
+        public $padre = null;
+        public $parametros = null;
 
         /**
         * Con esto realizo la busqueda de una vista dado el nombre de un archivo
@@ -16,6 +18,7 @@
                 if(!CanUseArray($vista)){ throw new Exception(__METHOD__." El array esta vacío.");}
                 $dir = DIR_paginas;
                 $copy = $vista;
+                $this->padre = $vista[array_key_first($vista)];
                 foreach($vista as $value){
                     $dir .= ($dir[strlen($dir)-1] == DS)? $value:DS.$value;
                     $this->alias = array_shift($copy);
@@ -72,6 +75,7 @@
                         if(CanUseArray($_REQUEST)){
                             $this->parametros = $_REQUEST;
                         }
+                        $this->method = (empty(@$_SERVER['REQUEST_METHOD']))? 'POST':$_SERVER['REQUEST_METHOD'];
                         $result = true;
                     }
                 }

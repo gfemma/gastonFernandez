@@ -39,92 +39,69 @@
 }
 
 /* Barra superior */
-.navRow{
-    display: flex;
-}
-
-.mainNav{
-    background-color: rgba(255, 255, 255, 0.9);
-    width: 90vw;
-    border-radius: 1.3em;
-}
-.mainNav.scrolled{
-    background-color: red !important;
-}
-
-.mainNav .dropdown .nav-item .nav-link{
+.mainNav .dropdown .dropdown-item{
     text-align: center;
 }
 
-.mainNav .dropdown .nav-item .nav-link:hover{
+.mainNav .dropdown .dropdown-item:hover{
     background-color: var(--color-activo);
     color: black !important;
 }
 
-.mainNav .dropdown .nav-item .nav-link.active{
-    background-color: transparent !important;
-}
-
-.mainNav .dropdown .nav-item .nav-link.active::before{
+.mainNav .dropdown .selected::before{
     font-family: "Icons";
     font-weight: 900;
     content: "\f105";
     padding-right: 10px;
-    animation: formSelected 1s ease-in 0s infinite alternate forwards;
 }
 
-.mainNav .dropdown .nav-item .nav-link.active::after{
+.mainNav .dropdown .selected::after{
     font-family: "Icons";
     font-weight: 900;
     content: "\f104";
     padding-left: 10px;
-    animation: formSelected 1s ease-out 0s infinite alternate-reverse forwards;
 }
 
-@keyframes formSelected {
-    0%{
-       filter: hue-rotate(calc(360/11)deg);
-    }
-    10%{
-        filter: hue-rotate(calc(360/11*2)deg);
-    }
-    20%{
-        filter: hue-rotate(calc(360/11*3)deg);
-    }
-    30%{
-        filter: hue-rotate(calc(360/11*4)deg);
-    }
-    40%{
-        filter: hue-rotate(calc(360/11*5)deg);
-    }
-    50%{
-        filter: hue-rotate(calc(360/11*6)deg);
-    }
-    60%{
-        filter: hue-rotate(calc(360/11*7)deg);
-    }
-    70%{
-        filter: hue-rotate(calc(360/11*8)deg);
-    }
-    80%{
-        filter: hue-rotate(calc(360/11*9)deg);
-    }
-    90%{
-        filter: hue-rotate(calc(360/11*10)deg);
-    }
-    100%{
-        filter: hue-rotate(360deg);
-    }
-}
-
-.mainNav .nav-item.selected{
-    border-radius: 1.3em;
-    background-color: var(--color-activo);
-}
-.mainNav .btn:active,.mainNav .btn:focus,.mainNav .btn:not(:focus){
-    border-end-end-radius: 1.3em;
-    border-start-end-radius: 1.3em;
-}
+/* Underline Effect*/
+.nav-item {
+    position: relative;
+  }
+  
+  .navbar-collapse ul li a.nav-link:before {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: transparent;
+      content: '';
+      opacity: 0;
+      -ms-transition: opacity 0.3s, -webkit-transform 0.3s;
+      -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+      transition: opacity 0.3s, transform 0.3s;
+      -ms-transform: translateY(10px);
+      -webkit-transform: translateY(10px);
+      transform: translateY(10px);
+  }
+  
+  .navbar-collapse ul li:hover a.nav-link:before ,.navbar-collapse ul li a.nav-link.active::before{
+      opacity: 1;
+      -ms-transform: translateY(0px);
+      -webkit-transform: translateY(0px);
+      transform: translateY(0px);
+      bottom: 0px;
+      background: #dd4343;
+  }
+  
+  .dropdown-item:hover, .dropdown-item:focus {
+      color: #ffffff;
+      text-decoration: none;
+      background-color: #dd4343;
+  }
+  
+  .dropdown-menu {
+    border: 0px;
+  }
 /* Fin barra superior */
 
 

@@ -7,6 +7,15 @@ var frmData = new cFormSend({
     }
 });
 
+var frmDataGet = new cFormSend({
+    file: 'checkData',
+    content: 'formulario',
+    type: 'GET',
+    onFinish: function(a,b,c,d){
+        evResult.Eval(c);
+    }
+});
+
 function obtenerPaises(){
     ajax({
         file: 'obtenerPaises',
@@ -152,7 +161,7 @@ function clearOptions(id){
     }
 }
 
-function sendFormData(id){
+function sendFormData(id, type = 'POST'){
     var frm = document.getElementById(id);
     if(frm == null){
         console.log("Elemento no encontrado");
@@ -163,7 +172,11 @@ function sendFormData(id){
         return;
     }
 
-    frmData.send(frm);
+    if(type.toUpperCase() == 'GET'){
+        frmDataGet.send(frm);
+    }else{
+        frmData.send(frm);
+    }
 }
 
 function checkFormData(frm){

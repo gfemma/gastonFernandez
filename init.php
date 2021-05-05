@@ -18,4 +18,5 @@
     require_once(DIR_config."databaseConfig.php");
     require_once(DIR_class."class.database.inc.php");
     require_once(DIR_class."class.controllers.inc.php");//Clase para el manejo de los controladores
+    require_once(DIR_class."class.menu.inc.php");
 ?>

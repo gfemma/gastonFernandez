@@ -36,7 +36,6 @@ var ajax = function(params, callback){
             if(ajx.options.content != ''){
                 finalUrl = (ajx.options.content.search(/\/|\\$/) != -1)? ajx.options.content.replace(/\\*$/, "/"):ajx.options.content+"/";
             }
-    
             finalUrl = "ajax/"+finalUrl+ajx.options.file;
             if(ajx.options.extraparams){
                 var i = 0;
@@ -62,6 +61,7 @@ var ajax = function(params, callback){
                 }
             }
         }
+        finalUrl = window.location.origin+"/"+finalUrl;
         ajx.xhr.open(ajx.options.type,finalUrl,true);
         ajx.xhr.send(formData);
     }

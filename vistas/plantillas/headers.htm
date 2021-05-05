@@ -1,9 +1,31 @@
+<?php
+    if(isset($controlador->configs) and CanUseArray($controlador->configs)){
+        if(isset($controlador->configs['js'])){
+            $toLoad = explode(",",$controlador->configs['js']);
+            foreach($toLoad as $value){
+                $js_files[] = $value.".js";
+            }
+        }
+        if(isset($controlador->configs['css'])){
+            $toLoad = explode(",",$controlador->configs['css']);
+            foreach($toLoad as $value){
+                $css_files[] = $value.".css";
+            }
+        }
+
+        if(isset($controlador->configs['title']) and !empty($controlador->configs['title'])){
+            $title = AcomodarMayusculas($controlador->configs['title']);
+        }
+    }
+
+    $site_title = (empty(@$title))? $site_title:$title;
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hola mundo</title>
+        <title><?php echo @$site_title; ?></title>
         <!-- Archivos CSS a cargar -->
         <?php
             if(CanUseArray($css_files)){
