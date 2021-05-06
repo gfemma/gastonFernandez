@@ -65,8 +65,10 @@ function obtenerLocalidades(){
         }
     }, function(a,b,c,d){
         var select = document.getElementById("localidad");
+        clearOptions('localidad');
+        addOption('localidad', {'text':'Seleccionar localidad...',disabled: true,selected: true});
         clearOptions('ciudad');
-        addOption('ciudad', {'text':'Selecciona una localidad'});
+        addOption('ciudad', {'text':'Selecciona una localidad',disabled: true,selected: true});
         if(select){
             while(select.childElementCount > 1){
                 select.children[1].remove();
@@ -104,7 +106,7 @@ function obtenerCiudades(){
     }, function(a,b,c,d){
         var select = document.getElementById("ciudad");
         clearOptions('ciudad');
-        addOption('ciudad', {'text':'Selecciona una localidad'});
+        addOption('ciudad', {'text':'Seleccionar ciudad...',disabled: true,selected: true});
         if(select){
             while(select.childElementCount > 1){
                 select.children[1].remove();
@@ -151,6 +153,10 @@ function addOption(id, values){
 
     if(typeof values.disabled != 'undefined'){
         option.setAttribute("disabled", true);
+    }
+
+    if(typeof values.selected != 'undefined'){
+        option.setAttribute("selected", true);
     }
 
     select.appendChild(option);
