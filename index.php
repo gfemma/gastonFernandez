@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once("init.php");
     $controlador = new cControllers;
     $url = array();
@@ -20,9 +21,6 @@
     header("Expires: 1");//En cuanto tiempo expira el cache
     header("Pragma: no-cache");//Sin cache
     header("Cache-Control: no-cache, must-revalidate");//Sin cache
-    if(!isset($_SESSION)){
-        session_start();
-    }
     //A partir de aca que se encargue el controlador
     require_once(DIR_controllers."controlador_pagina.php");
 ?>

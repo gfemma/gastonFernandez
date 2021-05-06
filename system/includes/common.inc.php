@@ -165,4 +165,18 @@
         }
         return $result;
     }
+
+    /**
+     * Esto calcula la edad dada la fecha de nacimiento
+     */
+    function CalcularEdad($fecha){
+        $result = false;
+        if(!empty($fecha) and cFechas::LooksLikeDate($fecha)){
+            $diff = cFechas::diferenciaEntreFechas(cFechas::Ahora(), $fecha,true);
+            if(CanUseArray($diff) and isset($diff['years'])){
+                $result = $diff['years'];
+            }
+        }
+        return $result;
+    }
 ?>

@@ -1,4 +1,5 @@
 <?php
+    setlocale(LC_ALL, "Spanish_Argentina", "es_AR.UTF8","es_MX");
     /**
      * Este archivo inicializa toda la configuración del sitio
      */
@@ -13,6 +14,8 @@
 
     require_once("directories.php");//Constantes de directorios
     require_once(DIR_includes."common.inc.php");
+    require_once(DIR_includes."class.fechas.inc.php");
+    require_once(DIR_includes."class.checks.inc.php");
     require_once(DIR_config."siteConfig.php");
     require_once(DIR_config."config.php");
     require_once(DIR_config."databaseConfig.php");

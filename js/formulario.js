@@ -4,6 +4,9 @@ var frmData = new cFormSend({
     content: 'formulario',
     onFinish: function(a,b,c,d){
         evResult.Eval(c);
+        if(typeof evResult.Result.ok != 'undefined' && typeof evResult.Result.next != 'undefined'){
+            window.location.href = window.location.protocol+"//"+window.location.host+"/"+evResult.Result.next;
+        }
     }
 });
 
@@ -13,6 +16,9 @@ var frmDataGet = new cFormSend({
     type: 'GET',
     onFinish: function(a,b,c,d){
         evResult.Eval(c);
+        if(typeof evResult.Result.ok != 'undefined' && typeof evResult.Result.next != 'undefined'){
+            window.location.href = window.location.protocol+"//"+window.location.host+"/"+evResult.Result.next;
+        }
     }
 });
 
