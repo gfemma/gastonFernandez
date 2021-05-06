@@ -122,8 +122,8 @@ function obtenerCiudades(self, from = 0){
             var added = false;
             if(typeof evResult.Result != 'undefined'){
                 if(typeof evResult.Result.ciudades != 'undefined'){
+                    added = (evResult.Result.ciudades.length > 0)? true:false;
                     for(d of evResult.Result.ciudades){
-                        added = true;
                         addOption("ciudad", {value: d.id, text: d.nombre});
                     }
                     if(typeof evResult.Result.more != 'undefined'){
