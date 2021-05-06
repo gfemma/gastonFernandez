@@ -96,20 +96,27 @@ function obtenerLocalidades(){
     });
 }
 
-function obtenerCiudades(){
+function obtenerCiudades(self, from = 0){
+    var localidades = document.getElementById("localidad");
+    var localidad_id = localidades.value;
     ajax({
         file: 'obtenerCiudades',
         content: 'paises',
         extraparams: {
-            localidad: this.value
+            localidad: localidad_id,
+            from: from
         }
     }, function(a,b,c,d){
         var select = document.getElementById("ciudad");
-        clearOptions('ciudad');
-        addOption('ciudad', {'text':'Seleccionar ciudad...',disabled: true,selected: true});
         if(select){
-            while(select.childElementCount > 1){
-                select.children[1].remove();
+            console.log(from);
+            if(from == 0){
+                console.log("Clear!");
+                clearOptions('ciudad');
+                addOption('ciudad', {'text':'Seleccionar ciudad...',disabled: true,selected: true});
+                while(select.childElementCount > 1){
+                    select.children[1].remove();
+                }
             }
             evResult.Eval(c);
             var added = false;
@@ -118,6 +125,9 @@ function obtenerCiudades(){
                     for(d of evResult.Result.ciudades){
                         added = true;
                         addOption("ciudad", {value: d.id, text: d.nombre});
+                    }
+                    if(typeof evResult.Result.more != 'undefined'){
+                        obtenerCiudades(null,evResult.Result.more);
                     }
                 }
             }

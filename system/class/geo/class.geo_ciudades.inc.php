@@ -20,9 +20,7 @@
         public function Get($id){
             $result = false;
             try {
-                if(is_null(SecureInt($id))){
-                    throw new Exception("El identificador de ciudad no es un número");
-                }
+                if(is_null(SecureInt($id))){ throw new Exception("El identificador de ciudad no es un número"); }
 
                 $sql = "SELECT * FROM ".SQLQuote($this->tabla_ciudades)." WHERE `id`=".$id;
                 $this->Query($sql);
@@ -38,17 +36,24 @@
         /**
          * Obtiene un listado de los paises almacenados en la base de datos
          */
-        public function Listar(){
+        public function Listar($page = null){
             $result = false;
             $this->res = null;
             try {
-                if(is_null(SecureInt($this->localidad_id))){
-                    throw new Exception("Debes elegir una localidad primero");
-                    
-                }
+                if(is_null(SecureInt($this->localidad_id))){ throw new Exception("Debes elegir una localidad primero"); }
                 $sql = "SELECT * FROM ".SQLQuote($this->tabla_ciudades). " WHERE `localidad_id`=".$this->localidad_id;
-                $this->res = $this->Query($sql);
+                if(!is_null(SecureInt($page))){
+                    $limit = 1000;
+                    $from = ($page*1000);
+                    $sql .= " LIMIT ".$from.",".$limit;
+                }
+                $this->res = $this->Query($sql,true);
                 if($fila = $this->First($this->res)){
+                    if(!is_null(SecureInt($page))){
+                        if($this->cantidad > $from+1000){
+                            $this->getMore = true;
+                        }
+                    }
                     $result = $fila;
                 }
             } catch (Exception $e) {

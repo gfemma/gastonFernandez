@@ -6,13 +6,19 @@
     $geo = new cGeociudades;
     $post = CleanArray($_POST);
 
-    $id = SecureInt($post['localidad']);
+    $id = SecureInt(@$post['localidad']);
     if(is_null($id)){
         EmitError("Debes seleccionar una localidad primero.");
         return;
     }
+
+    $from = SecureInt(@$post['from']);
+    if(is_null($from)){
+        $from = 0;
+    }
+
     $geo->localidad_id = $id;
-    if(!$rs = $geo->Listar()){
+    if(!$rs = $geo->Listar($from)){
         EmitError("No se pudo obtener la lista de ciudades");
         return;
     }
@@ -29,6 +35,15 @@
             'id' => $rs['id']
         );
     }while($rs = $geo->Siguiente());
+    
+    $reg = array(
+        'ciudades'=>$listado
+    );
+    
+    if(isset($geo->getMore) AND $geo->getMore == true){
+        $reg['more'] = $from+1;
+    }
 
-    ResponseOk(["ciudades"=>$listado]);
+
+    ResponseOk($reg);
 ?>

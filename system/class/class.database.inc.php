@@ -34,6 +34,7 @@ if(!defined("dbhost")){
                     $this->lastSql = $query;
                     $this->trackSql[] = $query;
                     $this->lastResult = $this->connect->Query($query);
+                    $this->num_rows = $this->lastResult->num_rows;
                     $result = $this->lastResult;
                 }
             } catch (Exception $e) {
