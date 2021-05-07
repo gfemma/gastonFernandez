@@ -109,9 +109,7 @@ function obtenerCiudades(self, from = 0){
     }, function(a,b,c,d){
         var select = document.getElementById("ciudad");
         if(select){
-            console.log(from);
             if(from == 0){
-                console.log("Clear!");
                 clearOptions('ciudad');
                 addOption('ciudad', {'text':'Seleccionar ciudad...',disabled: true,selected: true});
                 while(select.childElementCount > 1){
