@@ -1,0 +1,15 @@
+.azul:hover{
+    color: blue;
+}
+
+.rojo:hover{
+    color: red;
+}
+
+.verde:hover{
+    color: green;
+}
+
+h1,h2,h3,p{
+    text-align: center;
+}
