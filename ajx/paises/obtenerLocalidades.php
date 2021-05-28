@@ -4,9 +4,9 @@
  */
     require_once(DIR_class."geo".DS."class.geo_localidades.inc.php");
     $geo = new cGeoLocalidades;
-    $post = CleanArray($_POST);
+    $post = CleanArray($_REQUEST);
 
-    $id = SecureInt($post['pais']);
+    $id = SecureInt(@$post['pais']);
     if(is_null($id)){
         EmitError("Debes seleccionar un país primero.");
         return;

@@ -59,7 +59,7 @@ class cFormSend{
         if (typeof callback == 'function'){
             this.onFinish = callback;
         }
-        ajax({
+        ajx({
             file: this.file,
             content: this.content,
             type: this.type,

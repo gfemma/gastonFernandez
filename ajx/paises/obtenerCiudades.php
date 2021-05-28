@@ -4,7 +4,7 @@
  */
     require_once(DIR_class."geo".DS."class.geo_ciudades.inc.php");
     $geo = new cGeociudades;
-    $post = CleanArray($_POST);
+    $post = CleanArray($_REQUEST);
 
     $id = SecureInt(@$post['localidad']);
     if(is_null($id)){

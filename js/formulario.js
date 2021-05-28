@@ -23,10 +23,10 @@ var frmDataGet = new cFormSend({
 });
 
 function obtenerPaises(){
-    ajax({
+    ajx({
         file: 'obtenerPaises',
         content: 'paises'
-    }, function(a,b,c,d){
+    }, function(a,b,c){
         var select = document.getElementById("pais");
         clearOptions("localidades");
         if(select){
@@ -57,7 +57,7 @@ function obtenerPaises(){
 }
 
 function obtenerLocalidades(){
-    ajax({
+    ajx({
         file: 'obtenerLocalidades',
         content: 'paises',
         extraparams: {
@@ -99,13 +99,14 @@ function obtenerLocalidades(){
 function obtenerCiudades(self, from = 0){
     var localidades = document.getElementById("localidad");
     var localidad_id = localidades.value;
-    ajax({
+    ajx({
         file: 'obtenerCiudades',
         content: 'paises',
         extraparams: {
             localidad: localidad_id,
             from: from
-        }
+        },
+        type: 'GET'
     }, function(a,b,c,d){
         var select = document.getElementById("ciudad");
         if(select){
