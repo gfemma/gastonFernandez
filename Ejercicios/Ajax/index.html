@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio ajax</title>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div>
+            <h1 class="centrado">Ejercicio AJAX</h1>
+            <h2 class="centrado">Ingresa un nombre, un apellido y una edad y luego presiona el boton para ver los datos</h2>
+            <div>
+                <form id="datos">
+                    <div class="centrado">
+                        <div>
+                            <label for="nombre">Nombre</label>
+                        </div>
+                        <div>
+                            <input type="text" name="nombre" id="nombre" placeholder="Ingresa tu nombre" class="redondeado">
+                        </div>
+                    </div>
+
+                    <div class="centrado">
+                        <div>
+                            <label for="apellido">Apellido</label>
+                        </div>
+                        <div>
+                            <input type="text" name="apellido" id="apellido" placeholder="Ingresa tu apellido" class="redondeado">
+                        </div>
+                    </div>
+
+                    <div class="centrado">
+                        <div>
+                            <label for="edad">Edad</label>
+                        </div>
+                        <div>
+                            <input type="number" name="edad" id="edad" placeholder="Ingresa tu edad" class="redondeado">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="centrado">
+                        <button type="button" onclick="EnviarDatos();">Enviar</button>
+                        <button type="button" onclick="envioJquery();">Enviar con JQUERY</button>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            <div class="centrado">
+                <h4>Aquí apareceran los datos ingresados</h4>
+            </div>
+            <div class="centrado flex flex-centrado">
+                <div class="cuadro-datos" id="datosProcesados">
+                    <p class="centrado alineado-centrado">Esperando datos.....</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/ajax.js"></script>
+        <script src="js/jqueryAjax.js"></script>
+    </body>
+</html>

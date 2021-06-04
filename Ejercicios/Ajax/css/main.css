@@ -1,0 +1,40 @@
+.centrado{
+    text-align: center;
+}
+
+.redondeado{
+    border-radius: 2em;
+}
+
+.texto-rojo{
+    color: red;
+}
+
+.texto-verde{
+    color: green;
+}
+
+.sin-iconos{
+    list-style: none;
+}
+
+.cuadro-datos ul > li{
+    margin-left: -40px;
+}
+
+.cuadro-datos{
+    width: 20%;
+    height: 6em;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 2em;
+    border-color: bisque;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-centrado{
+    justify-content: center;
+}
