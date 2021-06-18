@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 12</title>
+
+        <!-- JQuery -->
+        <script src="../js/jquery-3.6.0.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <script src="../js/bootstrap.min.js"></script>
+        
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-1 d-none d-sm-inline-block"></div>
+            <div class="col-12 col-sm-10">
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="card" style="border-radius: 2em;">
+                            <div class="card-body">
+                                <h5 class="card-title">Presiona el boton para obtener datos</h5>
+                                <button class="btn btn-primary rounded" type="button" onclick="ObtenerDatos();">Obtener</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="card" style="border-radius: 2em;">
+                            <div class="card-body" id="datos">
+                                <p class="card-text">Esperando datos.....</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 d-inline-block"></div>
+        </div>
+
+        <!-- Custom javascript files -->
+        <script src="js/main.js"></script>
+    </body>
+</html>
