@@ -44,9 +44,12 @@ function envioJquery(){
             if(datos != null){
                 datos.innerHTML = respuesta;
             }
+            // Or
+            $("#datosProcesados").html(respuesta);
         });
 
-        estado.always(()=>{// ESto es lo mismo que .done, con la diferencia de que esta apartado del ajax
+        estado.always(()=>{// Esto es lo mismo que .done, con la diferencia de que esta apartado del ajax
+            console.log(estado);
             console.log("El ajax a finalizado");
             //estado.responseText; <- esta propiedad contiene el texto de respuesta del ajax, es decir lo que devuelve el archivo .php
         });
